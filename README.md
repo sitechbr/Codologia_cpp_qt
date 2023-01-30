@@ -1,0 +1,1 @@
+# Codologia_cpp_qt
