@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "secondwindow.h"
 
 #include <QMainWindow>
 
@@ -16,9 +17,10 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_push_clicked();
+    void on_Button_clicked();
 
 private:
     Ui::MainWindow *ui;
+    SecondWindow *window;
 };
 #endif // MAINWINDOW_H

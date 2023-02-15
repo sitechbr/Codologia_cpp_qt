@@ -13,3 +13,12 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_push_clicked()
+{
+    int firstNumber = ui->t_firstN->toPlainText().toInt();
+    int secondNumber = ui->t_secondN->toPlainText().toInt();
+    int result = firstNumber+secondNumber;
+
+    ui->label->setText(QString::number(result));
+}

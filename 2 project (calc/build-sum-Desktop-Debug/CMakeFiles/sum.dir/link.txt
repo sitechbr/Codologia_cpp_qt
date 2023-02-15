@@ -1,0 +1,1 @@
+/usr/bin/g++  -g   CMakeFiles/sum.dir/sum_autogen/mocs_compilation.cpp.o CMakeFiles/sum.dir/main.cpp.o CMakeFiles/sum.dir/mainwindow.cpp.o  -o sum  /usr/lib/x86_64-linux-gnu/libQt5Widgets.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.12.8 /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.12.8 

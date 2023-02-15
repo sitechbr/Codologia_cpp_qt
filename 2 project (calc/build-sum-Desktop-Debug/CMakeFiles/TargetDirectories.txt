@@ -1,0 +1,4 @@
+/home/dino/Qt_project_git/2 project (calc/build-sum-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/dino/Qt_project_git/2 project (calc/build-sum-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/dino/Qt_project_git/2 project (calc/build-sum-Desktop-Debug/CMakeFiles/sum.dir
+/home/dino/Qt_project_git/2 project (calc/build-sum-Desktop-Debug/CMakeFiles/sum_autogen.dir
