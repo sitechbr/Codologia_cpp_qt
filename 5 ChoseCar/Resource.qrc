@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/rec">
+        <file>img/add.png</file>
+        <file>img/exit.png</file>
+        <file>img/audi.png</file>
+        <file>img/bmw.png</file>
+        <file>img/mers.png</file>
+        <file>img/audi_car.png</file>
+        <file>img/bmw_car.png</file>
+        <file>img/mercedes_car.png</file>
+        <file>img/shadow.png</file>
+    </qresource>
+</RCC>
