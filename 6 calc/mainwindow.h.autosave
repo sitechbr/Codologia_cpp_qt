@@ -25,5 +25,6 @@ private slots:
     void on_b_equal_clicked();
     void on_b_clear_clicked();
     void math_operations();
+    void on_b_plus_minus_clicked();
 };
 #endif // MAINWINDOW_H

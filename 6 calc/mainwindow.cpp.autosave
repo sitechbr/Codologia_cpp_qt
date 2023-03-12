@@ -142,3 +142,8 @@ void MainWindow::on_b_clear_clicked()
     ui->result->setText("");
 
 }
+
+void MainWindow::on_b_plus_minus_clicked()
+{
+    
+}
