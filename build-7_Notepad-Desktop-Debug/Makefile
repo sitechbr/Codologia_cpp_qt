@@ -53,9 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../7_Notepad/main.cpp \
-		../7_Notepad/mainwindow.cpp moc_mainwindow.cpp
+		../7_Notepad/mainwindow.cpp qrc_Resources.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
+		qrc_Resources.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -230,7 +232,8 @@ Makefile: ../7_Notepad/7_Notepad.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../7_Notepad/7_Notepad.pro
+		../7_Notepad/7_Notepad.pro \
+		../7_Notepad/Resources.qrc
 	$(QMAKE) -o Makefile ../7_Notepad/7_Notepad.pro -qtconf /usr/lib/x86_64-linux-gnu/qt5/qt.conf -early QMAKE_CC=x86_64-linux-gnu-gcc QMAKE_CXX=x86_64-linux-gnu-g++ QMAKE_LINK=x86_64-linux-gnu-g++ QMAKE_STRIP=x86_64-linux-gnu-strip QMAKE_QMAKE=/usr/bin/x86_64-linux-gnu-qmake PKG_CONFIG=x86_64-linux-gnu-pkg-config -before -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf:
@@ -313,6 +316,7 @@ Makefile: ../7_Notepad/7_Notepad.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf:
 ../7_Notepad/7_Notepad.pro:
+../7_Notepad/Resources.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../7_Notepad/7_Notepad.pro -qtconf /usr/lib/x86_64-linux-gnu/qt5/qt.conf -early QMAKE_CC=x86_64-linux-gnu-gcc QMAKE_CXX=x86_64-linux-gnu-g++ QMAKE_LINK=x86_64-linux-gnu-g++ QMAKE_STRIP=x86_64-linux-gnu-strip QMAKE_QMAKE=/usr/bin/x86_64-linux-gnu-qmake PKG_CONFIG=x86_64-linux-gnu-pkg-config -before -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -327,6 +331,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../7_Notepad/Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../7_Notepad/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../7_Notepad/main.cpp ../7_Notepad/mainwindow.cpp $(DISTDIR)/
@@ -354,8 +359,24 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_Resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_Resources.cpp
+qrc_Resources.cpp: ../7_Notepad/Resources.qrc \
+		/usr/lib/qt5/bin/rcc \
+		../7_Notepad/Icons/Icons/DeleteSticky.bmp \
+		../7_Notepad/Icons/Icons/Highlight.bmp \
+		../7_Notepad/Icons/Icons/Save.bmp \
+		../7_Notepad/Icons/Icons/Sticky.bmp \
+		../7_Notepad/Icons/Icons/Open.bmp \
+		../7_Notepad/Icons/Icons/Turtle.png \
+		../7_Notepad/Icons/Icons/New.bmp \
+		../7_Notepad/Icons/Icons/Copy.bmp \
+		../7_Notepad/Icons/Icons/Cut.bmp \
+		../7_Notepad/Icons/Icons/favicon.ico \
+		../7_Notepad/Icons/Icons/Paste.bmp
+	/usr/lib/qt5/bin/rcc -name Resources ../7_Notepad/Resources.qrc -o qrc_Resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -387,7 +408,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -397,6 +418,9 @@ main.o: ../7_Notepad/main.cpp ../7_Notepad/mainwindow.h
 mainwindow.o: ../7_Notepad/mainwindow.cpp ../7_Notepad/mainwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../7_Notepad/mainwindow.cpp
+
+qrc_Resources.o: qrc_Resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
