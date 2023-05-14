@@ -102,6 +102,15 @@ void MainWindow::on_pushButton_2_clicked()
     q.addBindValue(arm.memory);
     q.addBindValue(arm.HDD);
     q.exec();
+    if(!q.isActive()){
+        QMessageBox::warning(this,QObject::trUtf8("Post SIZ List Table, INSERT ERROR!"),q.lastError().text());
+        ui->statusbar->showMessage(q.lastError().text());
+        return;
+    }
+    else {
+        ui->statusbar->showMessage("OK");
+    }
+
 
 
     q.clear();
