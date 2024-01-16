@@ -24,19 +24,26 @@ void MainWindow::on_pushButton_clicked()
     QString password = ui->t_password->text();
 
     if ((username == USER) && (password==PASSWORD)) {
-        QMessageBox::Information(this,"Authorization","Success");
+        QMessageBox::information(this,"Authorization","Success");
     }
     else if (username!=USER) {
-        QMessageBox::Warning(this,"Authorization","Bad User");
+        QMessageBox::warning(this,"Authorization","Bad User");
     }
     else if (username!=PASSWORD) {
-        QMessageBox::Warning(this,"Authorization","Bad Password");
+        QMessageBox::warning(this,"Authorization","Bad Password");
     }
 }
 
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    QApplication::quit();
+    QMessageBox::StandardButton reply= QMessageBox::question(this, "Question","Yes or No?",QMessageBox::Yes|QMessageBox::No);
+
+    if (reply == QMessageBox::Yes) {
+        QApplication::quit();
+    }
+    else {
+        qDebug("User asked No");
+    }
 }
 
