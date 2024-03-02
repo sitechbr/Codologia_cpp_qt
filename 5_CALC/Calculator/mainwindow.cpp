@@ -25,10 +25,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->b_pr,SIGNAL(clicked()),this,SLOT(math_operations()));
     connect(ui->b_del,SIGNAL(clicked()),this,SLOT(math_operations()));
 
-    ui->b_plus->setCheckable(true);
-    ui->b_min->setCheckable(true);
-    ui->b_pr->setCheckable(true);
-    ui->b_del->setCheckable(true);
+    ui->b_plus->setCheckable(false);
+    ui->b_min->setCheckable(false);
+    ui->b_pr->setCheckable(false);
+    ui->b_del->setCheckable(false);
 
 
 
@@ -88,48 +88,26 @@ void MainWindow::operations()
 
 
 void MainWindow::math_operations() {
-    QPushButton *button = (QPushButton *)sender();
-    num_first = ui->t_result->text().toDouble();
-    ui->t_result->setText("");
-    button->setCheckable(true);
+   QPushButton *button = (QPushButton *)sender();
+   num_first=ui->t_result->text().toDouble();
+   ui->t_result->setText("");
+   button->setCheckable(true);
 
 }
 
 void MainWindow::on_b_eq_clicked()
 {
-    double labelNumber,num_second;
+    double labelNumber, num_second;
     QString result;
     num_second = ui->t_result->text().toDouble();
-    if(ui->b_plus->isChecked()) {
+    if (ui->b_plus->isCheckable()) {
         labelNumber = num_first+num_second;
         result=QString::number(labelNumber,'g',15);
         ui->t_result->setText(result);
-        ui->b_plus->setChecked(false);
-
-
+        ui->b_plus->setCheckable(false);
 
     }
-    else if(ui->b_min->isChecked()) {
-        labelNumber = num_first-num_second;
-        result=QString::number(labelNumber,'g',15);
-        ui->t_result->setText(result);
-        ui->b_plus->setChecked(false);
 
-    }
-    else if(ui->b_pr->isChecked()) {
-        labelNumber = num_first*num_second;
-        result=QString::number(labelNumber,'g',15);
-        ui->t_result->setText(result);
-        ui->b_plus->setChecked(false);
-
-    }
-    else if(ui->b_del->isChecked()) {
-        labelNumber = num_first/num_second;
-        result=QString::number(labelNumber,'g',15);
-        ui->t_result->setText(result);
-        ui->b_plus->setChecked(false);
-
-    }
 }
 
 
