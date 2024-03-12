@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->b_1->setEnabled(true);
-    ui->b_2->setEnabled(false);
+    ui->b_2->setEnabled(fals
     ui->b_3->setEnabled(false);
     ui->b_4->setEnabled(false);
     showStats();
