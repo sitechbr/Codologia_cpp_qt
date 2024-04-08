@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>pow.jpg</file>
+        <file>mech.jpg</file>
+    </qresource>
+</RCC>

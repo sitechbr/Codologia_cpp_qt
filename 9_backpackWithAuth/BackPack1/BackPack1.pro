@@ -9,24 +9,27 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    backpack_window.cpp \
-    checkauthdb.cpp \
+    backpack.cpp \
+    backpackdb.cpp \
+    driverdb.cpp \
+    magazine.cpp \
     main.cpp \
     mainwindow.cpp \
-    registration_window.cpp \
-    user.cpp
+    registrationw.cpp
 
 HEADERS += \
-    backpack_window.h \
-    checkauthdb.h \
+    backpack.h \
+    backpackdb.h \
+    driverdb.h \
+    magazine.h \
     mainwindow.h \
-    registration_window.h \
-    user.h
+    registrationw.h
 
 FORMS += \
-    backpack_window.ui \
+    backpack.ui \
+    magazine.ui \
     mainwindow.ui \
-    registration_window.ui
+    registrationw.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
